@@ -24,14 +24,23 @@
   </tbody>
 </table>
 
-<!-- Basic recorder  -->
-<ziggeo ziggeo-width=320
-        ziggeo-height=240>
-</ziggeo>
-<br>
-<!-- Rerecorder with customisations -->
 <div class="container">
-  <ziggeo 
+  <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+<!-- Basic recorder  -->
+        <ziggeo ziggeo-width=320
+                ziggeo-height=240>
+        </ziggeo>
+      </div>
+  </div>
+</div>
+<br>
+<!-- Rerecorder with customisations --><!-- 
+Use when a user comes back and wants to rerecord their existing videos -->
+<div class="container">
+  <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <ziggeo 
         ziggeo-width=320
         ziggeo-height=240
         ziggeo-key='My video'
@@ -47,13 +56,30 @@
         ziggeo-video="_USERID"
         >
 </ziggeo>
+      </div>
 
+  </div>
+  
+<!-- Used to identify new submissions  -->
 <script>ZiggeoApi.Events.on("submitted", function (data) {
   alert("Submitted a new video with token '" + data.video.token + "'!");
 });</script>
 
 <br>
 </div>
+
+<!-- Used for listing all videos in browser -->
+<script>ZiggeoApi.Videos.index({}, {
+  success: function (args, videos) {
+    // videos is an array of all the videos
+    // the following code dynamically adds all the videos to the page
+    for (var i = 0; i < videos.length; ++i) {
+      $("body").append("<ziggeo 
+        ziggeo-video='" + videos[i].token + "'>
+        </ziggeo>");
+    }
+  }
+});</script>
 
 
 <%= link_to 'New Video', new_video_path %>
