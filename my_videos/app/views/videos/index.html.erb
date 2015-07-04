@@ -23,10 +23,13 @@
     <% end %>
   </tbody>
 </table>
+
+<!-- Basic recorder  -->
 <ziggeo ziggeo-width=320
         ziggeo-height=240>
 </ziggeo>
 <br>
+<!-- Rerecorder with customisations -->
 <div class="container">
   <ziggeo 
         ziggeo-width=320
@@ -41,8 +44,14 @@
         ziggeo-rerecordings=4
         ziggeo-face_outline
         ziggeo-modes="rerecorder"
+        ziggeo-video="_USERID"
         >
 </ziggeo>
+
+<script>ZiggeoApi.Events.on("submitted", function (data) {
+  alert("Submitted a new video with token '" + data.video.token + "'!");
+});</script>
+
 <br>
 </div>
 
