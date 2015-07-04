@@ -35,8 +35,10 @@
   </div>
 </div>
 <br>
+
+<!-- Add question_id and candidate_id to  -->
 <!-- Rerecorder with customisations --><!-- 
-Use when a user comes back and wants to rerecord their existing videos -->
+Used when a user comes back and wants to rerecord their existing videos -->
 <div class="container">
   <div class="row">
       <div class="col-md-6 col-md-offset-3">
@@ -67,19 +69,19 @@ Use when a user comes back and wants to rerecord their existing videos -->
 
 <br>
 </div>
-
+<!-- ######################################################################################################################### -->
 <!-- Used for listing all videos in browser -->
 <script>ZiggeoApi.Videos.index({}, {
   success: function (args, videos) {
     // videos is an array of all the videos
     // the following code dynamically adds all the videos to the page
     for (var i = 0; i < videos.length; ++i) {
-      $("body").append("<ziggeo 
-        ziggeo-video='" + videos[i].token + "'>
-        </ziggeo>");
+      $("body").append("<ziggeo ziggeo-width=320 ziggeo-height=240 ziggeo-video='" + videos[i].token + "'></ziggeo>");
     }
   }
 });</script>
+
+
 
 
 <%= link_to 'New Video', new_video_path %>
